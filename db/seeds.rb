@@ -23,16 +23,6 @@ end
   User.create!(name:  name, password: password, email: email)
 end
 
-1.upto 10 do |n|
-  book = Book.create!(title: Faker::Lorem.sentence(2), description: Faker::Lorem.sentence(3), user_id: n)
-  book.book_images.create!(user_id: (10-(n-1)), title: Faker::Lorem.sentence, file: File.new(fixtures_path.join(n.to_s + ".jpg")))
-end
-
-categories = Category.all
-
-categories.each do |category|
-  Theme.create!(category: category, book: Book.take)
-end
 
 3.times do |n|
   name  = Faker::Name.first_name
@@ -40,11 +30,25 @@ end
   Author.create!(name:  name, surname: surname)
 end
 
-authors = Author.all
-
-authors.each do |author|
-  Authorship.create!(author: author, book: Book.take)
+1.upto 10 do |n|
+  book = Book.new(title: Faker::Lorem.sentence(2), description: Faker::Lorem.sentence(3), user_id: n, file: File.new(fixtures_path.join(n.to_s + ".jpg")))
+  book.authors << Author.take
+  book.categories << Category.take
+  book.save
 end
+
+# categories = Category.all
+
+# categories.each do |category|
+#   Theme.create!(category: category, book: Book.take)
+# end
+
+
+# authors = Author.all
+
+# authors.each do |author|
+#   Authorship.create!(author: author, book: Book.take)
+# end
 
 
 

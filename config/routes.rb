@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'rates/create'
+
+  resources :reviews
   root 'books#index'
+  get 'books/search'
   resources :images
   resources :authors
   resources :books
   resources :categories
+  resources :books do
+    resources :rates
+  end
+
 
 
   # devise_for :users, ActiveAdmin::Devise.config

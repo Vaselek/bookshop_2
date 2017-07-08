@@ -1,0 +1,7 @@
+<%= simple_form_for [@book, @book.rates.build] do |f| %>
+    <div>
+       <%= f.input :value, label: "Выберите цифру от 1 до 5", input_html: { min: '1', max: '5' } %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
