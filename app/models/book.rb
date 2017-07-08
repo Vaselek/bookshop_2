@@ -17,4 +17,12 @@ class Book < ApplicationRecord
     rates.average(:value) || "0"
   end
 
+  def author_names
+    authors_arr = []
+    authors.each do |author|
+      authors_arr << author.name.capitalize
+    end
+    authors_arr.join(", ")
+  end
+
 end

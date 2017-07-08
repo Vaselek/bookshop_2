@@ -1,6 +1,7 @@
 <h1><%= @book.title %></h1>
 <%= image_tag @book.file_url(:thumb) %>
 <div><b>Описание:</b> <%= @book.description %></div>
+<div><b>Авторы:</b> <%= @book.author_names %></div>
 <div><b>Средний рейтинг:</b> <%= @book.average_rating %></div>
 
 <div><b>Поставьте свою оценку:</b> <%= render 'rates/form' %></div>
