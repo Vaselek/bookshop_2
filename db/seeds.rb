@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(name: "Admin", surname: "Adminych", email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
-User.create!(name: "User", surname: "Userych", email: 'user@example.com', password: 'password', password_confirmation: 'password', admin: false)
+User.create!(name: "User", surname: "Userych", email: 'user@example.com', password: 'password', password_confirmation: 'password', admin: false, user: true)
 
 fixtures_path = Rails.root.join('app', 'assets', 'images')
 

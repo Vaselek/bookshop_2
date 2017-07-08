@@ -2,6 +2,7 @@
 <%= image_tag @book.file_url(:thumb) %>
 <div><b>Описание:</b> <%= @book.description %></div>
 <div><b>Авторы:</b> <%= @book.author_names %></div>
+<div><b>Книга добавлена пользователем: </b><%= @book.user.name %></div>
+<div><b>Дата добавления книги: </b><%= @book.created_at %></div>
 <div><b>Средний рейтинг:</b> <%= @book.average_rating %></div>
-
-<div><b>Поставьте свою оценку:</b> <%= render 'rates/form' %></div>
+<div></b> <%= render 'rates/form' %></div>

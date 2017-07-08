@@ -11,7 +11,6 @@ class Book < ApplicationRecord
   validates :file, :presence => true
 
   mount_uploader :file, FileUploader
-  self.per_page = 9
 
   def average_rating
     rates.average(:value) || "0"

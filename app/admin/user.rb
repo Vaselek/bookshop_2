@@ -1,28 +1,31 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation
+
+ permit_params :name, :surname, :email, :password, :password_confirmation, :admin
+
+  form do |f|
+    f.inputs do
+      f.semantic_errors
+      f.input :name, label: "Имя"
+      f.input :surname, label: "Фамилия"
+      f.input :email
+      f.input :password, label: "Пароль"
+      f.input :password_confirmation, label: "Повторите пароль"
+      f.input :phone
+      f.input :admin, as: :boolean
+      f.input :type, :label => 'Тип', :as => :select, :collection => [["Родитель", Parent], ["Кейс - менеджер", CaseManager], ["Куратор", Curator], ["Терапевт", Therapist], ["Тим - лидер", TeamLeader]]
+    end
+    f.actions
+  end
 
   index do
     selectable_column
     id_column
+    column "Имя", :name
     column :email
-    column :current_sign_in_at
-    column :sign_in_count
-    column :created_at
+    column "Телефон", :phone
+    column "Администратор", :admin
+    column "Тип", :type
     actions
-  end
-
-  filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
-
-  form do |f|
-    f.inputs "Admin Details" do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
-    end
-    f.actions
   end
 
 end
