@@ -1,2 +1,20 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<h1>Все книги</h1>
+
+<div class="container">
+  
+  <div class="row">
+  <% @books.each do |book| %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <%= image_tag "/uploads/books/#{book.id}", size: '150x300' %>
+        <div class="caption">
+          <h3 class="block"><%= book.title %></h3>
+          </p>
+          <p><%= link_to 'Далее..', book_path(book), class: "btn btn-primary" %></p>
+        </div>
+      </div>
+    </div> 
+  <% end %>
+  </div>
+  
+</div>
