@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  root 'books#index'
+  resources :images
+  resources :authors
+  resources :books
+  resources :categories
+
+
   # devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
