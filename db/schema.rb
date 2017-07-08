@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708081010) do
+ActiveRecord::Schema.define(version: 20170708095313) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170708081010) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "file"
     t.index ["book_id"], name: "index_book_images_on_book_id"
     t.index ["user_id"], name: "index_book_images_on_user_id"
   end
@@ -55,8 +56,9 @@ ActiveRecord::Schema.define(version: 20170708081010) do
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -83,17 +85,6 @@ ActiveRecord::Schema.define(version: 20170708081010) do
     t.datetime "updated_at",  null: false
     t.index ["book_id"], name: "index_themes_on_book_id"
     t.index ["category_id"], name: "index_themes_on_category_id"
-  end
-
-  create_table "title_images", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.string   "file"
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_title_images_on_book_id"
-    t.index ["user_id"], name: "index_title_images_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

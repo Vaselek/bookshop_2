@@ -1,4 +1,7 @@
 <h1>Все книги</h1>
+<% @categories.each do |category| %>
+  <%= link_to category.title, category_path(category) %>
+<% end %>
 
 <div class="container">
   
@@ -6,7 +9,7 @@
   <% @books.each do |book| %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <%= image_tag "/uploads/books/#{book.id}", size: '150x300' %>
+        <%= image_tag book.book_images.last.file_url(:thumb) %>
         <div class="caption">
           <h3 class="block"><%= book.title %></h3>
           </p>

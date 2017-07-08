@@ -1,22 +1,61 @@
 class CategoriesController < ApplicationController
-  def create
-  end
+  
+  # def create
+  #     @category = Category.new(category_params)
+      
+  #     # if @category.save
+  #     #   uploaded_file = params[:category][:picture]
+  #     #   unless uploaded_file.nil?
+  #     #     new_file_path = Rails.root.join('public', 'uploads', 'categories', @category.id.to_s)
+  #     #     File.open(new_file_path, "wb")  do |file|
+  #     #     file.write uploaded_file.read
+  #     #     end
+  #     #   end   
+  #     #   redirect_to admin_categories_path
+  #     # else
+  #     #   render 'new'
+  #     # end
 
-  def new
-  end
+  #   end
 
-  def show
-  end
+  #   def new
+  #     @category = Category.new
+  #   end
 
-  def index
-  end
+   
+    def show
+      @category = Category.find(params[:id])
+      @books = @category.books
+    end
 
-  def edit
-  end
+    # def edit
+    #   @category = Category.find(params[:id])
+    # end
 
-  def update
-  end
+    # def update
+    #   @category = Category.find(params[:id])
+    #   if @category.update(category_params)
+    #     redirect_to admin_categories_path
+    #   else
+    #     render 'edit'
+    #   end
+    # end
 
-  def destroy
-  end
+    # def destroy
+    #   @category = Category.destroy(params[:id])
+    #   redirect_to admin_categories_path
+    # end
+
+
+
+
+    private
+
+    def category_params
+      params.require(:category).permit(:title)
+    end
+
+
+  
+
 end

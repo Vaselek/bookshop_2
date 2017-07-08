@@ -8,3 +8,48 @@
 User.create!(name: "Admin", surname: "Adminych", email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
 User.create!(name: "User", surname: "Userych", email: 'user@example.com', password: 'password', password_confirmation: 'password', admin: false)
 
+fixtures_path = Rails.root.join('app', 'assets', 'images')
+
+categories_arr = ["Драма", "Ужас", "Приключение"]
+
+categories_arr.each do |i|
+  Category.create(title: i)
+end
+
+8.times do |n|
+  name  = Faker::Name.name
+  password = Faker::Internet.password
+  email = Faker::Internet.email
+  User.create!(name:  name, password: password, email: email)
+end
+
+1.upto 10 do |n|
+  book = Book.create!(title: Faker::Lorem.sentence(2), description: Faker::Lorem.sentence(3), user_id: n)
+  book.book_images.create!(user_id: (10-(n-1)), title: Faker::Lorem.sentence, file: File.new(fixtures_path.join(n.to_s + ".jpg")))
+end
+
+categories = Category.all
+
+categories.each do |category|
+  Theme.create!(category: category, book: Book.take)
+end
+
+3.times do |n|
+  name  = Faker::Name.first_name
+  surname = Faker::Name.last_name 
+  Author.create!(name:  name, surname: surname)
+end
+
+authors = Author.all
+
+authors.each do |author|
+  Authorship.create!(author: author, book: Book.take)
+end
+
+
+
+
+
+
+
+
